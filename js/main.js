@@ -179,7 +179,7 @@ if(window.innerWidth > 768){
     
 }
 }
-if(url == '/blog-archive-2.html' || url == '/dailywebshop/blog-archive-2.html'){
+if(url.includes('/blog-archive-2.html')){
   let BlogsWrapper = document.querySelector('.aa-blog-content .row');
   let comments = getFromLocalStorage('comments');
   BlogsWrapper.innerHTML = '';
