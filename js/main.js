@@ -125,7 +125,7 @@ function indexProducts(products, category, divName){
 //Function for printing blogs
 function printBlogs(blogs){
 let sortedBlogs = blogs.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
-if(url == '/index.html' || url == '/dailywebshop/index.html' || url === '/'){
+if(url.includes('/index.html') || url.endsWith('/')){
 let latestBlogsWrapper = document.querySelector(`.aa-latest-blog-area .row`);
 let comments = getFromLocalStorage('comments');
 latestBlogsWrapper.innerHTML = '';
@@ -706,7 +706,7 @@ function mailCheck(){
     }
     else{
       message.className = '';
-      if(url.includes('index.html') || url === '/'){
+      if(url.includes('index.html') || url.endsWith('/')){
       message.textContent = 'Thanks for subscribing to our newsletter!';
       }
       if(url.includes('product-detail.html')){
@@ -1351,12 +1351,12 @@ function deleteProductTrigger(){
     });
   });
 }
-if(!url.includes('/blog-archive-2.html') && !url.includes('/index.html') && url !== '/' && !url.includes('/blog-single.html')){
+if(!url.includes('/blog-archive-2.html') && !url.includes('/index.html') && !url.endsWith('/') && !url.includes('/blog-single.html')){
   removeFromLocalStorage('clickedBlog');
   removeFromLocalStorage('users');
   removeFromLocalStorage('comments');
 }
-if(!url.includes('/products.html') && !url.includes('/index.html') && url !== '/' && !url.includes('/product-detail.html')){
+if(!url.includes('/products.html') && !url.includes('/index.html') && !url.endsWith('/') && !url.includes('/product-detail.html')){
   removeFromLocalStorage('clickedProduct');
   removeFromLocalStorage('modalProduct');
 }
@@ -1368,7 +1368,7 @@ if(url.includes('/cart.html')){
     removeFromLocalStorage('cartForCheckout');
   }
 }
-if(url.includes('/index.html') || url === '/'){
+if(url.includes('/index.html') || url.endsWith('/')){
   let users = fetch(BASEURL + 'users.json')
   .then(response => response.json()).then(data => {
       addToLocalStorage('users', data);
